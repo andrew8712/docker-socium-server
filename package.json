@@ -1,0 +1,25 @@
+{
+  "name": "socium-server",
+  "version": "1.0.0",
+  "description": "Parse Server for Socium mobile app template.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrew8712/docker-socium-server"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "docker-links": "^1.0.2",
+    "express": "~4.11.x",
+    "kerberos": "~0.0.x",
+    "nodemon": "^1.8.1",
+    "parse": "~1.8.0",
+    "parse-server": "2.2.22"
+  },
+  "scripts": {
+    "start": "nodemon --watch /parse/cloud index.js"
+  },
+  "engines": {
+    "node": ">=4.6"
+  }
+}
