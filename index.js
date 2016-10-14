@@ -11,7 +11,8 @@ var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
     if (links.mongo) {
-        databaseUri = "mongodb://" + links.mongo.hostname + ":" + links.mongo.port + "/dev";
+        var databaseName = process.env.DATABASE_NAME || "dev";
+        databaseUri = "mongodb://" + links.mongo.hostname + ":" + links.mongo.port + "/" + databaseName;
     }
 }
 
@@ -195,8 +196,6 @@ if(liveQuery) {
     };
 }
 
-
-
 var api = new ParseServer({
     databaseURI: databaseUri || "mongodb://localhost:27017/dev",
     cloud: process.env.CLOUD_CODE_MAIN || __dirname + "/cloud/main.js",
@@ -232,10 +231,7 @@ var api = new ParseServer({
     //}
 });
 
-//console.log("appId: " + api.appId);
-//console.log("masterKey: " + api.masterKey);
-//console.log("cloud: " + api.cloud);
-//console.log("databaseURI: " + api.databaseURI);
+console.log("databaseURI: ", databaseUri);
 console.log("appId: ", process.env.APP_ID);
 console.log("masterKey: ", process.env.MASTER_KEY);
 
